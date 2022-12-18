@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 function Header(){
     return(
         <header>
-            <h2>Mail Penny</h2>
+            <h2><Link to="/">Mail Penny</Link></h2>
         </header>
     )
 }
