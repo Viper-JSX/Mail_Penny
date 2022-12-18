@@ -3,6 +3,7 @@ import { CREATE_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./ac
 export function signIn(payload){
     return function(dispatch){
         //Fetch the user
+        console.log(payload);
         dispatch({ type: SIGN_IN, payload });
     }
 }
