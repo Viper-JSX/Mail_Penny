@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
+import { initialState } from "./initial_state";
 
-function user(state=null, action){
+function user(state=initialState.user, action){
     switch(action.type){
         default:{
             console.log(state)
@@ -9,7 +10,7 @@ function user(state=null, action){
     }
 }
 
-function message(state=null, action){
+function message(state=initialState.message, action){
     switch(action.type){
         default:{
             return state;
