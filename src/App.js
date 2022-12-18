@@ -35,8 +35,6 @@ function App(){
         dispatch(signOut());
     }
 
-    handleSignOut();
-
     return(
         <div className="App">
             <Layout

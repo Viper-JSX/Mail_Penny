@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import Header from "./Header/Header";
 import MainPage from "./MainPage/MainPage";
 import Email from "./Emails/Email";
