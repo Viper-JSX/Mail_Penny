@@ -7,7 +7,11 @@ function Layout(){
             <Header />
             <Routes>
                 <Route path="/" element={<h2>Main Page</h2>} />
-                <Route path="/authorization" element={<h2>Authorization</h2>} />
+                <Route path="/authorization" element={<h2>Authorization</h2>}>
+                    <Route path="sign-in" element={<h3>Sign-in</h3>} />
+                    <Route path="sign-up" element={<h3>Sign-up</h3>} />
+                </Route>
+
                 <Route path="/emails" element={<h2>Emails</h2>} />
                 <Route path="/emails/:id" element={<h2>Emails viewer</h2>} />    
                 <Route path="/emails/create" element={<h2>Emails Editor</h2>} />
