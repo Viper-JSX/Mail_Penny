@@ -16,7 +16,7 @@ function user(state=initialState.user, action){
 
         case SIGN_OUT: {
             console.log("Signing-out");
-            return state; 
+            return null;
         }
 
         case SEND_EMAIL: {

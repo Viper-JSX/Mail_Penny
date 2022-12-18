@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import EmailOpener from "./Email_opener";
 import EmailsTopPannel from "./Emails_top_pannel";
 
-function Emails(){
+function Emails({ handleSignOut }){
     const emails = useSelector((state) => state.user?.emails) || [];
 
     return(
         <div className="emailsWrapper">
-            <EmailsTopPannel />
+            <EmailsTopPannel handleSignOut={handleSignOut} />
 
             <table className="emails">
                 <thead>

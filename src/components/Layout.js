@@ -10,13 +10,14 @@ import SignInForm from "./Authorization/Sign_in_form";
 function Layout({ 
     handleEmailSend,
     handleSignIn,
-    handleSignUp
+    handleSignUp,
+    handleSignOut
  }){
     return(
         <div id="layout">
             <Header />
             <Routes>
-                <Route path="/" element={<MainPage />} />
+                <Route path="/" element={<MainPage handleSignOut={handleSignOut} />} />
                 <Route path="/emails/:id" element={<Email />} />    
                 <Route path="/emails/create" element={<EmailEditor handleEmailSend={handleEmailSend} />} />
 

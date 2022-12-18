@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { sendEmail, signIn, signUp } from "./redux/thunks";
+import { signOut } from "./redux/action_creators";
 
 function App(){
     const dispatch = useDispatch();
@@ -30,6 +31,12 @@ function App(){
         dispatch(signUp({ signUpData }));
     }
 
+    function handleSignOut(){
+        dispatch(signOut());
+    }
+
+    handleSignOut();
+
     return(
         <div className="App">
             <Layout
@@ -37,6 +44,7 @@ function App(){
 
                 handleSignIn={handleSignIn}
                 handleSignUp={handleSignUp}
+                handleSignOut={handleSignOut}
             />
         </div>
     )
