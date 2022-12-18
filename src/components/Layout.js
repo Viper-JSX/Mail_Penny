@@ -8,7 +8,9 @@ import SignUpForm from "./Authorization/Sign_up_form";
 import SignInForm from "./Authorization/Sign_in_form";
 
 function Layout({ 
-    handleEmailSend
+    handleEmailSend,
+    handleSignIn,
+    handleSignUp
  }){
     return(
         <div id="layout">
@@ -19,8 +21,8 @@ function Layout({
                 <Route path="/emails/create" element={<EmailEditor handleEmailSend={handleEmailSend} />} />
 
                 <Route path="/authorization" element={<Authorization />}>
-                    <Route path="sign-in" element={<SignInForm />} />
-                    <Route path="sign-up" element={<SignUpForm />} />
+                    <Route path="sign-in" element={<SignInForm handleSignIn={handleSignIn} />} />
+                    <Route path="sign-up" element={<SignUpForm handleSignUp={handleSignUp} />} />
                 </Route>
 
                 <Route path="*" element={<h2>404 <br />Not found</h2>} />

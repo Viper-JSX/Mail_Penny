@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SignUpForm(){
+function SignUpForm({ handleSignUp }){
     const [ signUpData, setSignUpData ] = useState({ username: "", email: "", password: "" });
     
     function handleUsernameChange(event){
@@ -16,7 +16,7 @@ function SignUpForm(){
     }
 
     return(
-        <form className="signUpForm">
+        <form className="signUpForm" onSubmit={(event) => handleSignUp({ event, signUpData })}>
             <input type="text" placeholder="Username" value={signUpData.username} onChange={handleUsernameChange} />
             <input type="email" placeholder="Email" value={signUpData.email} onChange={handleEmailChange} />
             <input type="password" placeholder="Password" value={signUpData.password} onChange={handlePasswordChange} />
