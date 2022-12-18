@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { initialState } from "./initial_state";
-import { CREATE_EMAIL, SIGN_IN, SIGN_OUT, SIGN_UP } from "./action_types";
+import { CREATE_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP } from "./action_types";
 
 function user(state=initialState.user, action){
     switch(action.type){
@@ -32,7 +32,15 @@ function user(state=initialState.user, action){
 
 function message(state=initialState.message, action){
     switch(action.type){
-        default:{
+        case SHOW_MESSAGE: {
+            console.log("Showing the message");
+            return state;
+        }
+        case HIDE_MESSAGE: {
+            console.log("Hiding the message");
+            return state;
+        }
+        default: {
             return state;
         }
     }
