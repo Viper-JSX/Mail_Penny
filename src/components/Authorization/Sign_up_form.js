@@ -1,14 +1,26 @@
 import { useState } from "react";
 
-function SignUpForm({ handleUsernameChange }){
+function SignUpForm(){
     const [ signUpData, setSignUpData ] = useState({ username: "", email: "", password: "" });
     
+    function handleUsernameChange(event){
+        setSignUpData({ ...signUpData, username: event.target.value });
+    }
+
+    function handleEmailChange(event){
+        setSignUpData({ ...signUpData, email: event.target.value });
+    }
+
+    function handlePasswordChange(event){
+        setSignUpData({ ...signUpData, password: event.target.value });
+    }
+
     return(
         <form className="signUpForm">
-            <input type="text" placeholder="Nickname" value={signUpData.username} />
-            <input type="email" placeholder="Email" value={signUpData.email} />
-            <input type="password" placeholder="Password" value={signUpData.password} />
-            <button type="submit"></button>
+            <input type="text" placeholder="Username" value={signUpData.username} onChange={handleUsernameChange} />
+            <input type="email" placeholder="Email" value={signUpData.email} onChange={handleEmailChange} />
+            <input type="password" placeholder="Password" value={signUpData.password} onChange={handlePasswordChange} />
+            <button type="submit">Sign-up</button>
         </form>
     )
 }
