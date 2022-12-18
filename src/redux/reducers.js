@@ -5,17 +5,16 @@ import { SEND_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP } fr
 function user(state=initialState.user, action){
     switch(action.type){
         case SIGN_IN: {
-            console.log("Signing-in");
             return state;
         }
         
         case SIGN_UP: {
-            console.log("Signing-up");
             return state;
         }
 
         case SIGN_OUT: {
             console.log("Signing-out");
+            localStorage.removeItem("user");
             return null;
         }
 

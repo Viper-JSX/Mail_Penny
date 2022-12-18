@@ -10,7 +10,7 @@ function App(){
         const user = JSON.parse(localStorage.getItem("user"));
 
         if(user){ //user is logged-in
-            dispatch(signIn({login: user.login, password: user.password}));
+            dispatch(signIn({ signInData: {username: user.username, password: user.password} }));
         }
     }, []);
 
@@ -18,7 +18,6 @@ function App(){
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
         dispatch(sendEmail({ emailData }));
-        console.log(emailData);
     }
 
     function handleSignIn({ event, signInData }){
