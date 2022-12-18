@@ -5,6 +5,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"), //Files output folder
+        publicPath: "/",
         filename: "bundle.js" //Bundled files. The file where all files are bundled to
     },
 
