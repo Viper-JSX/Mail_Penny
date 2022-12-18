@@ -4,14 +4,16 @@ import MainPage from "./MainPage/MainPage";
 import Email from "./Emails/Email";
 import EmailEditor from "./Email_editor/Email_editor";
 
-function Layout(){
+function Layout({ 
+    handleEmailSend
+ }){
     return(
         <div id="layout">
             <Header />
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/emails/:id" element={<Email />} />    
-                <Route path="/emails/create" element={<EmailEditor />} />
+                <Route path="/emails/create" element={<EmailEditor handleEmailSend={handleEmailSend} />} />
 
                 <Route path="/authorization" element={<h2>Authorization</h2>}>
                     <Route path="sign-in" element={<h3>Sign-in</h3>} />

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-function EmailEditor(){
+function EmailEditor({ handleEmailSend }){
     const user = useSelector((state) => state.user);
     const [ emailData, setEmailData ] = useState({ 
-        sender: user?.email || "none",
+        sender: user?.id || 0,
         recipient: "",
         subjectText: "",
         emailText: ""
@@ -25,16 +25,16 @@ function EmailEditor(){
 
     return(
         <div className="emailEditor">
-            <form className="emailForm" method="POST">
+            <form className="emailForm" method="POST" onSubmit={(event) => handleEmailSend({ event, emailData })}>
                 <label htmlFor="senderInput">Sender
-                    <input id="senderInput" name="sender" value={emailData.sender} type="email" disabled />
+                    <input id="senderInput" name="sender" value={user?.email || "none"} type="email" disabled />
                 </label>
 
                 <input type="email" name="recipientEmail" placeholder="Recipient" value={emailData.recipient} onChange={handleRecipientChange} />
                 <input type="text" name="subjectText" placeholder="Subject" value={emailData.subjectText} onChange={handleSubjectTextChange} />
                 <textarea name="emailText" placeholder="Email text" value={emailData.emailText} onChange={handleEmailTextChange}></textarea>
 
-                <button type="submit">Send</button>
+                <button id="sendEmail" type="submit">Send</button>
             </form>
         </div>
     );  
