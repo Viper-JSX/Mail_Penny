@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_UP } from "./action_types";
+import { HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 
 export function signIn(payload){
     return function(dispatch){
@@ -14,3 +14,11 @@ export function signUp(payload){
     }
 }
 
+
+export function showMessage(payload){
+    return function(dispatch){
+        dispatch({ type: SHOW_MESSAGE, payload });
+
+        setTimeout(() => dispatch({ type: HIDE_MESSAGE }), 5000);
+    }
+}
