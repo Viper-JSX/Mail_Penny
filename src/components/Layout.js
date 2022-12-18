@@ -2,6 +2,7 @@ import { Outlet, Route, Routes } from "react-router";
 import Header from "./Header/Header";
 import MainPage from "./MainPage/MainPage";
 import Email from "./Emails/Email";
+import EmailEditor from "./Email_editor/Email_editor";
 
 function Layout(){
     return(
@@ -10,7 +11,7 @@ function Layout(){
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/emails/:id" element={<Email />} />    
-                <Route path="/emails/create" element={<h2>Emails Editor</h2>} />
+                <Route path="/emails/create" element={<EmailEditor />} />
 
                 <Route path="/authorization" element={<h2>Authorization</h2>}>
                     <Route path="sign-in" element={<h3>Sign-in</h3>} />
