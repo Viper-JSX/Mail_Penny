@@ -19,8 +19,8 @@ function Layout({
                 <Route path="/emails/create" element={<EmailEditor handleEmailSend={handleEmailSend} />} />
 
                 <Route path="/authorization" element={<Authorization />}>
-                    <Route path="sign-in" element={<SignUpForm />} />
-                    <Route path="sign-up" element={<SignInForm />} />
+                    <Route path="sign-in" element={<SignInForm />} />
+                    <Route path="sign-up" element={<SignUpForm />} />
                 </Route>
 
                 <Route path="*" element={<h2>404 <br />Not found</h2>} />

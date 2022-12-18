@@ -5,7 +5,6 @@ import { sendEmail, signIn } from "./redux/thunks";
 
 function App(){
     const dispatch = useDispatch();
-
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
 
