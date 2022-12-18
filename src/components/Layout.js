@@ -4,6 +4,7 @@ import MainPage from "./MainPage/MainPage";
 import Email from "./Emails/Email";
 import EmailEditor from "./Email_editor/Email_editor";
 import Authorization from "./Authorization/Authorization";
+import SignUpForm from "./Authorization/Sign_up_form";
 
 function Layout({ 
     handleEmailSend
@@ -17,7 +18,7 @@ function Layout({
                 <Route path="/emails/create" element={<EmailEditor handleEmailSend={handleEmailSend} />} />
 
                 <Route path="/authorization" element={<Authorization />}>
-                    <Route path="sign-in" element={<h3>Sign-in</h3>} />
+                    <Route path="sign-in" element={<SignUpForm />} />
                     <Route path="sign-up" element={<h3>Sign-up</h3>} />
                 </Route>
 
