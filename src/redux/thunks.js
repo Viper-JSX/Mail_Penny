@@ -1,4 +1,4 @@
-import { HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
+import { CREATE_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 
 export function signIn(payload){
     return function(dispatch){
@@ -14,6 +14,11 @@ export function signUp(payload){
     }
 }
 
+export function createEmail(payload){
+    return function(dispatch){
+        dispatch({ type: CREATE_EMAIL, payload });
+    }
+}
 
 export function showMessage(payload){
     return function(dispatch){
