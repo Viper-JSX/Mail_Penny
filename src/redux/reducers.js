@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { initialState } from "./initial_state";
-import { CREATE_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP } from "./action_types";
+import { SEND_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP } from "./action_types";
 
 function user(state=initialState.user, action){
     switch(action.type){
@@ -19,8 +19,8 @@ function user(state=initialState.user, action){
             return state; 
         }
 
-        case CREATE_EMAIL: {
-            console.log("Creating email");
+        case SEND_EMAIL: {
+            console.log("Sending email", action.payload.emailData);
             return state;
         }
 
