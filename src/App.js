@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteEmail, sendEmail, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
 import { validateEmail } from "./utilities/validation/validate_email";
+import { validateEmailAdress } from "./utilities/validation/validate_email_adress";
 
 function App(){
     const dispatch = useDispatch();
@@ -15,7 +16,6 @@ function App(){
             dispatch(signIn({ signInData: user }));
         }
     }, []);
-
 
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
