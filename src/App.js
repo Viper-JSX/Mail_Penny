@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEmail, sendEmail, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
+import { validateEmail } from "./utilities/validation/validate_email";
 
 function App(){
     const dispatch = useDispatch();
