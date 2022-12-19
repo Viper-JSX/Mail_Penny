@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
-import { sendEmail, signIn, signUp } from "./redux/thunks";
+import { deleteEmail, sendEmail, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
 
 function App(){
@@ -18,6 +18,10 @@ function App(){
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
         dispatch(sendEmail({ emailData }));
+    }
+
+    function handleEmailDelete({ id }){
+        dispatch(deleteEmail({ id }));
     }
 
     function handleSignIn({ event, signInData }){

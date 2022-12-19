@@ -24,6 +24,7 @@ export function sendEmail(payload){
 
 export function deleteEmail(payload){
     return function(dispatch){
+        console.log("delete")
         dispatch({ type: DELETE_EMAIL, payload });
     }
 }
