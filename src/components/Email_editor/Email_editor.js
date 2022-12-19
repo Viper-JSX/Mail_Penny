@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 function EmailEditor({ handleEmailSend }){
     const user = useSelector((state) => state.user);
-    console.log(user);
     const [ emailData, setEmailData ] = useState({ 
         sender: user.id,
         recipient: "",

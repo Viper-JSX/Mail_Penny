@@ -5,7 +5,6 @@ import { SEND_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP, DEL
 function user(state=initialState.user, action){
     switch(action.type){
         case SIGN_IN: {
-            console.log(action.payload)
             return { ...action.payload.user, emails: action.payload.emails  };
         }
         
@@ -19,12 +18,10 @@ function user(state=initialState.user, action){
         }
 
         case SEND_EMAIL: {
-            console.log("Sending email", action.payload.emailData);
             return { ...state };
         }
 
         case DELETE_EMAIL: {
-            console.log("deleting email", action.payload.id);
             return state;
         }
 
@@ -37,11 +34,9 @@ function user(state=initialState.user, action){
 function message(state=initialState.message, action){
     switch(action.type){
         case SHOW_MESSAGE: {
-            console.log("Showing the message");
             return { ...state, messageTitle: action.payload.messageTitle, messageText: action.payload.messageText };
         }
         case HIDE_MESSAGE: {
-            console.log("Hiding the message");
             return null;
         }
         default: {

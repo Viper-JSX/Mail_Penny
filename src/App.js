@@ -10,15 +10,12 @@ import { signOut } from "./redux/action_creators";
 function App(){
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log(localStorage);
         const user = JSON.parse(localStorage.getItem("user"));
-        console.log(user)
         if(user){ //user is logged-in
             dispatch(signIn({ signInData: user }));
         }
     }, []);
 
-    useSelector((state) => console.log(state.user));
 
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
