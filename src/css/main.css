@@ -16,6 +16,12 @@ body{
     padding: 0;
 }
 
+input, textarea{
+    border-radius: 0.3rem;
+}
+
+
+
 header{
     text-align: center;
     background-color: var(--hightlightedColor);
@@ -75,6 +81,27 @@ header > *{
 .emailsTopPannel > *{
     margin: 0.5rem
 }
+
+
+
+
+
+/*Email editor*/
+.emailEditor{
+    display: flex;
+    justify-content: center;
+}
+
+.emailEditor > .emailForm{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.emailEditor > .emailForm > *{
+    margin: 0.3rem;
+}
+
 
 
 /*Message Dialog*/

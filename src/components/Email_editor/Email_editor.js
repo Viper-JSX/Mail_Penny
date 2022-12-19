@@ -26,7 +26,7 @@ function EmailEditor({ handleEmailSend }){
     return(
         <div className="emailEditor">
             <form className="emailForm" method="POST" onSubmit={(event) => handleEmailSend({ event, emailData })}>
-                <label htmlFor="senderInput">Sender
+                <label htmlFor="senderInput">Sender: 
                     <input id="senderInput" name="sender" value={user?.email || "none"} type="email" disabled />
                 </label>
 
