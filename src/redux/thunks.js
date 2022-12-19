@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DELETE_EMAIL, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
+import { fetchEmails } from "../utilities/fetching/fetch_emails";
 
 export function signIn(payload){
     return async function(dispatch){
@@ -11,12 +12,13 @@ export function signIn(payload){
         .catch((err) => console.log(err, "when fetching user"));
 
         if(user){
-            const emails = await axios.get(`http://68.183.74.14:4005/api/emails/`, 
-            {
-                headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
-            })
-            .then((response) => { console.log(response); return response.data})
-            .catch((err) => console.log(err));
+            const emails = await fetchEmails("http://68.183.74.14:4005/api/emails/", { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` });
+            //await axios.get(`http://68.183.74.14:4005/api/emails/`, 
+            //{
+            //    headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
+            //})
+            //.then((response) => { console.log(response); return response.data})
+            //.catch((err) => console.log(err));
 
             localStorage.setItem("user", JSON.stringify({ username: payload.signInData.username, password: payload.signInData.password }));
             dispatch({ type: SIGN_IN, payload: { user, emails } });
