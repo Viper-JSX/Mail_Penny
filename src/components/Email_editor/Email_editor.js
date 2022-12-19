@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import RichTextEditor from '../Rich_text_editor/Rich_text_editor';
+
 function EmailEditor({ handleEmailSend }){
     const user = useSelector((state) => state.user);
     const [ emailData, setEmailData ] = useState({ 
@@ -33,6 +35,7 @@ function EmailEditor({ handleEmailSend }){
                 <input type="email" name="recipientEmail" placeholder="Recipient" value={emailData.recipient} onChange={handleRecipientChange} />
                 <input type="text" name="subjectText" placeholder="Subject" value={emailData.subjectText} onChange={handleSubjectTextChange} />
                 <textarea name="emailText" placeholder="Email text" value={emailData.emailText} onChange={handleEmailTextChange}></textarea>
+                <RichTextEditor />
 
                 <button id="sendEmail" type="submit">Send</button>
             </form>
