@@ -3,7 +3,7 @@ import "./css/main.css";
 import React, { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmail, sendEmail, signIn, signUp } from "./redux/thunks";
+import { deleteEmail, getEmails, sendEmail, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
 
 
@@ -15,7 +15,6 @@ function App(){
             dispatch(signIn({ signInData: user }));
         }
     }, []);
-
 
     useSelector((state) => console.log(state.user));
 

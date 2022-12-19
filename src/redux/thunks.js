@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_EMAIL, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
+import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 import { fetchEmails } from "../utilities/fetching/fetch_emails";
 
 export function signIn(payload){
@@ -46,6 +46,13 @@ export function signUp(payload){
             localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
             dispatch({ type: SIGN_UP, payload: { user } });
         }
+    }
+}
+
+export function getEmails(payload){
+    return async function(dispatch){
+        const emails = await fetchEmails(payload.url, payload.headers);
+        dispatch({ type: GET_EMAILS, payload: { emails } });
     }
 }
 
