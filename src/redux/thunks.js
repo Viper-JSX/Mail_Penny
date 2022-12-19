@@ -15,7 +15,7 @@ export function signIn(payload){
             {
                 headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
             })
-            .then((response) => response.data.results || [])
+            .then((response) => { console.log(response); return response.data.results || []})
             .catch((err) => console.log(err));
 
             localStorage.setItem("user", JSON.stringify({ username: payload.signInData.username, password: payload.signInData.password }));

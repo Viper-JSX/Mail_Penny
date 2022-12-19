@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 function EmailOpener({ email }){
+    console.log(email)
+
     return(
         <tr className="emailOpener">
             <td>

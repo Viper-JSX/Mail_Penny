@@ -4,6 +4,7 @@ import EmailsTopPannel from "./Emails_top_pannel";
 
 function Emails({ handleSignOut }){
     const emails = useSelector((state) => state.user?.emails) || [];
+    useSelector((state) => console.log(state.user.emails));
 
     return(
         <div className="emailsWrapper">
@@ -20,10 +21,8 @@ function Emails({ handleSignOut }){
 
                 <tbody>
                     {
-                        emails.forEach((email) => <EmailOpener email={email} />)
+                        emails.map((email) => <EmailOpener email={email} key={email.id} />)
                     }
-
-                    <EmailOpener email={{id: 1, recipient: "yura@gmail.com", subject: "Some text"}} />
                 </tbody>
             </table>
         </div>
