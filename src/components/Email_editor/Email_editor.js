@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 
 function EmailEditor({ handleEmailSend }){
     const user = useSelector((state) => state.user);
+    console.log(user);
     const [ emailData, setEmailData ] = useState({ 
-        sender: user?.id || 0,
+        sender: user.id,
         recipient: "",
-        subjectText: "",
-        emailText: ""
+        subject: "",
+        message: ""
     });
 
 
@@ -16,11 +17,11 @@ function EmailEditor({ handleEmailSend }){
     }
 
     function handleSubjectTextChange(event){
-        setEmailData({ ...emailData, subjectText: event.target.value });
+        setEmailData({ ...emailData, subject: event.target.value });
     }
 
     function handleEmailTextChange(event){
-        setEmailData({ ...emailData, emailText: event.target.value });
+        setEmailData({ ...emailData, message: event.target.value });
     }
 
     return(
