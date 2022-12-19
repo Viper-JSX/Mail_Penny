@@ -1,3 +1,5 @@
+import "./css/main.css";
+
 import React, { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
