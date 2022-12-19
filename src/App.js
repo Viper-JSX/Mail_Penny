@@ -9,16 +9,15 @@ import { signOut } from "./redux/action_creators";
 
 function App(){
     const emails = useSelector((state) => state.user?.emails);
-
     const dispatch = useDispatch();
+
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if(user){ //user is logged-in
             dispatch(signIn({ signInData: user }));
         }
     }, []);
-
-    showMessage({ messageTitle: "Title", messageText: "Text" })
 
     function handleEmailsSwitch({ current, next }){
         const user = JSON.parse(localStorage.getItem("user"));

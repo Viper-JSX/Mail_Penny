@@ -39,7 +39,7 @@ function user(state=initialState.user, action){
 function message(state=initialState.message, action){
     switch(action.type){
         case SHOW_MESSAGE: {
-            return { ...state, messageTitle: action.payload.messageTitle, messageText: action.payload.messageText };
+            return { messageTitle: action.payload.messageTitle, messageText: action.payload.messageText };
         }
         case HIDE_MESSAGE: {
             return null;

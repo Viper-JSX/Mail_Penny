@@ -2,15 +2,15 @@ import { useSelector } from "react-redux";
 
 function MessageDialog(){
     const message = useSelector((state) => state.message);
-    useSelector((state) => state.message)
 
-    if(!message){
+    if(!message){ //There is no message
         return null;
     }
 
     return(
         <div className="messageDialog">
-            Some message
+            <b className="messageTitle">{ message.messageTitle }</b>
+            <p className="messageText">{ message.messageText }</p>
         </div>
     );
 }
