@@ -31,11 +31,45 @@ header > *{
 }
 
 
+/*Main page*/
+.mainPage{
+    width: 100%;
+}
+
+
 /*Emails*/
+.emailsWrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .emailsTopPannel{
+    width: 100%;
     color: var(--lightColor);
     background-color: var(--darkColor);
     text-align: center;
+}
+
+.emails{
+    margin-top: 1rem;
+    color: var(--lightColor);
+    background-color: var(--darkColor);
+    border: var(--middleDarkBorder);
+    border-collapse: collapse;
+}
+
+.emails tr{
+    border-bottom: var(--middleLightBorder);
+}
+
+.emails td > *{
+    color: var(--lightColor);
+}
+
+.emails tr > *{
+    padding: 0.3rem;
 }
 
 .emailsTopPannel > *{
