@@ -1,25 +1,25 @@
 import axios from "axios";
 import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
+import { validateEmailAdress } from '../utilities/validation/validate_email_adress';
 import { fetchEmails } from "../utilities/fetching/fetch_emails";
 
 export function signIn(payload){
     return async function(dispatch){
+        console.log(payload)
+        if(!payload.signInData.username || !payload.signInData.password){
+            dispatch(showMessage({ messageTitle: "Invalid input", messageText: "Fill in all the fields" }));
+            return;
+        }
+
         //Fetch the user
         const user =  await axios.get("http://68.183.74.14:4005/api/users/current/", {
             headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` }
         })
         .then((response) => response.data)
-        .catch((err) => console.log(err, "when fetching user"));
+        .catch((err) => console.log(err));
 
         if(user){
             const emails = await fetchEmails("http://68.183.74.14:4005/api/emails/", { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` });
-            //await axios.get(`http://68.183.74.14:4005/api/emails/`, 
-            //{
-            //    headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
-            //})
-            //.then((response) => { console.log(response); return response.data})
-            //.catch((err) => console.log(err));
-
             localStorage.setItem("user", JSON.stringify({ username: payload.signInData.username, password: payload.signInData.password }));
             dispatch({ type: SIGN_IN, payload: { user, emails } });
         }
@@ -28,6 +28,11 @@ export function signIn(payload){
 
 export function signUp(payload){
     return async function(dispatch){
+        if(!payload.signUpData.username || !validateEmailAdress(payload.signUpData.email) || !payload.signUpData.password){
+            dispatch(showMessage({ messageTitle: "Invalid input", messageText: "Fill in all the fields and check the correctness of the data. Password must be at least 8 characters long" }));
+            return;
+        }
+
         //Create and post the user
         const user = await axios.post("http://68.183.74.14:4005/api/users/", 
         {
