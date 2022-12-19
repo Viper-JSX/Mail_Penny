@@ -18,6 +18,8 @@ function App(){
         }
     }, []);
 
+    useSelector((state) => console.log(state.user));
+
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
 

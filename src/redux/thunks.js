@@ -12,16 +12,15 @@ export function signIn(payload){
         .catch((err) => console.log(err, "when fetching user"));
 
         if(user){
-            //axios.get(`http://68.183.74.14:4005/api/emails/`, 
-            //{
-            //    headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
-            //    params: { id: "0" }
-            //})
-            //.then((response) => console.log("Messages", response))
-            //.catch((err) => console.log(err));
+            const emails = await axios.get(`http://68.183.74.14:4005/api/emails/`, 
+            {
+                headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` },
+            })
+            .then((response) => response.data.results || [])
+            .catch((err) => console.log(err));
 
             localStorage.setItem("user", JSON.stringify({ username: payload.signInData.username, password: payload.signInData.password }));
-            dispatch({ type: SIGN_IN, payload: { user } });
+            dispatch({ type: SIGN_IN, payload: { user, emails } });
         }
     }
 }
