@@ -4,7 +4,6 @@ import { DELETE_EMAIL, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP 
 export function signIn(payload){
     return async function(dispatch){
         //Fetch the user
-        console.log(payload)
         const user =  await axios.get("http://68.183.74.14:4005/api/users/current/", {
             headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` }
         })
