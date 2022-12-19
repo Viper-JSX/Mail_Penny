@@ -1,6 +1,10 @@
 :root{
+    --darkColor: #111111;
+    --lightColor: #DDDDDD;
+
     --middleDarkBorder: 2px solid black;
     --middleLightBorder: 2px solid white;
+    --hightlightedColor: orange;
 }
 
 *{
@@ -14,8 +18,29 @@ body{
 
 header{
     text-align: center;
+    background-color: var(--hightlightedColor);
 }
 
+header > *{
+    margin: 0;
+    padding: 0;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Emails*/
+.emailsTopPannel{
+    color: var(--lightColor);
+    background-color: var(--darkColor);
+    text-align: center;
+}
+
+.emailsTopPannel > *{
+    margin: 0.5rem
+}
 
 
 /*Message Dialog*/

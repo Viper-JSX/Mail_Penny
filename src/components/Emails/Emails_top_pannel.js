@@ -5,7 +5,7 @@ function EmailsTopPannel({ handleSignOut }){
     const user = useSelector((state) => state.user);
 
     return(
-        <div>
+        <div className="emailsTopPannel">
             <NavLink to="/emails/create">
                 <button>Write email</button>
             </NavLink>
