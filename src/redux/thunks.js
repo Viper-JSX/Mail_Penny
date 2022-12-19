@@ -69,22 +69,20 @@ export function getEmails(payload){
 }
 
 export function sendEmail(payload){
-    return function(dispatch){
+    return async function(dispatch){
         if(!validateEmail(payload.emailData)){
             dispatch(showMessage({ messageTitle: "Invalid input", messageText: "Fill in all the fields" }));
             return;
         }
 
-        axios.post("http://68.183.74.14:4005/api/emails/", 
-        payload.emailData,
+        const headers = { "Authorization": `Basic ${ btoa(payload.user.username + ":" + payload.user.password)}` };
 
-        {
-            headers: { "Authorization": `Basic ${ btoa(payload.user.username + ":" + payload.user.password)}` },
-        })
+        await axios.post("http://68.183.74.14:4005/api/emails/", payload.emailData, {headers})
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
 
         dispatch({ type: SEND_EMAIL, payload });
+        dispatch(getEmails({ url: `${apiBaseUrl}/emails/`, headers })); //To update emails list after deleting
     }
 }
 
