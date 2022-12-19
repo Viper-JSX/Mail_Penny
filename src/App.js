@@ -8,6 +8,8 @@ import { signOut } from "./redux/action_creators";
 
 
 function App(){
+    const emails = useSelector((state) => state.user?.emails);
+
     const dispatch = useDispatch();
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
@@ -16,10 +18,18 @@ function App(){
         }
     }, []);
 
-    useSelector((state) => console.log(state.user));
 
     function handleEmailsSwitch({ current, next }){
-        console.log(current, next);
+        const user = JSON.parse(localStorage.getItem("user"));
+        const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}`};
+        console.log(emails);
+        if(next > current){
+            getEmails({ url: emails.next, headers });
+        }
+        else if(next < current){
+            getEmails({ ulr: emails.prev, headers });
+        }
+        console.log(current, next, emails);
     }
 
     function handleEmailSend({ event, emailData }){
