@@ -27,7 +27,7 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
                 </tbody>
             </table>
 
-            <PagginationMenu count={/*emails.count*/ 42} step={5} handler={handleEmailsSwitch} />
+            <PagginationMenu count={emails?.count || 0} step={5} handler={handleEmailsSwitch} />
         </div>
     )
 }
