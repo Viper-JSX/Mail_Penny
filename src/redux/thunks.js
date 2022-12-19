@@ -1,3 +1,4 @@
+import axios from "axios";
 import { DELETE_EMAIL, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 
 export function signIn(payload){
@@ -9,10 +10,28 @@ export function signIn(payload){
 }
 
 export function signUp(payload){
-    return function(dispatch){
+    return async function(dispatch){
         //Create and post the user
-        localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
-        dispatch({ type: SIGN_UP, payload });
+        const user = await axios.post("http://68.183.74.14:4005/api/users/", 
+        {
+            username: payload.signUpData.username,
+            email: payload.signUpData.email,
+            password: payload.signUpData.password,
+        },
+
+        {
+            headers: { "Authorization": `Basic ${ btoa("dev_6" + ":" + "8Fjg345gGW")}` }
+        })
+        .then((response) => {
+            response.data;
+        })
+        .catch((err) => console.log(err.response.data));
+
+        if(user){
+            console.log(user);
+            localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
+            dispatch({ type: SIGN_UP, payload: { user } });
+        }
     }
 }
 
