@@ -26,8 +26,19 @@ function PagginationMenu({ count, step, handler }){
 
     return(
         <div className="pagginationMenu">
-            <button className="prev" onClick={handlePrevClick}>{"<"}</button>
-            <button className="next" onClick={handleNextClick}>{">"}</button>
+            {
+                currentItem !== 0 ? 
+                <button className="prev" onClick={handlePrevClick} >{"<"}</button>
+                :
+                <button className="prev" disabled >{"<"}</button>
+            }
+            
+            {
+                currentItem !== itemsCount ?
+                <button className="next" onClick={handleNextClick}>{">"}</button>
+                :
+                <button className="next" disabled>{">"}</button>
+            }
         </div>
     )
 }
