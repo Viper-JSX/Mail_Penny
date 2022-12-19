@@ -3,7 +3,7 @@ import "./css/main.css";
 import React, { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmail, getEmails, sendEmail, signIn, signUp } from "./redux/thunks";
+import { deleteEmail, getEmails, sendEmail, showMessage, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
 
 
@@ -18,6 +18,7 @@ function App(){
         }
     }, []);
 
+    showMessage({ messageTitle: "Title", messageText: "Text" })
 
     function handleEmailsSwitch({ current, next }){
         const user = JSON.parse(localStorage.getItem("user"));
