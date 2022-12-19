@@ -3,7 +3,6 @@ import { useState } from "react";
 function PagginationMenu({ count, step, handler }){
     const [ currentItem, setCurrentItem ] = useState(0);
     const itemsCount = Math.ceil(count / step);
-    console.log(Array(itemsCount).fill(0))
 
     function handleItemClick({ next }){
         handler({ current: currentItem, next });
