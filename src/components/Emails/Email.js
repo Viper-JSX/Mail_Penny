@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 
 function Email({ handleEmailDelete }){
-    const emailId = useParams().id;
+    const emailId = parseInt(useParams().id);
 
     return(
         <div className="email">

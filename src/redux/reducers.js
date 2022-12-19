@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers, compose } from "redux";
 import { initialState } from "./initial_state";
 import { SEND_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP, DELETE_EMAIL, GET_EMAILS } from "./action_types";
 
@@ -27,7 +27,8 @@ function user(state=initialState.user, action){
         }
 
         case DELETE_EMAIL: {
-            return state;
+            const id = action.payload.id;
+            return { ...state, emails: { ...state.emails, results: state.emails.results.filter((email) => email.id !== id) }};
         }
 
         default: {
