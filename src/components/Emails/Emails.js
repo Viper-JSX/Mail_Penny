@@ -4,7 +4,8 @@ import EmailsTopPannel from "./Emails_top_pannel";
 import PagginationMenu from "../Paggination_menu/Pagination_menu";
 
 function Emails({ handleSignOut, handleEmailsSwitch }){
-    const emails = useSelector((state) => state.user?.emails.results) || [];
+    const emails = useSelector((state) => state.user?.emails);
+    const emailsToShow = emails?.results || [];
 
     useSelector((state) => console.log(state.user.emails));
 
@@ -23,12 +24,12 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
 
                 <tbody>
                     {
-                        emails.map((email) => <EmailOpener email={email} key={email.id} />)
+                        emailsToShow.map((email) => <EmailOpener email={email} key={email.id} />)
                     }
                 </tbody>
             </table>
 
-            <PagginationMenu count={41} step={5} handler={handleEmailsSwitch} />
+            <PagginationMenu count={emails.count} step={5} handler={handleEmailsSwitch} />
         </div>
     )
 }
