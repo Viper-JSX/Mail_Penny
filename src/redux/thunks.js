@@ -89,7 +89,13 @@ export function sendEmail(payload){
 
 export function deleteEmail(payload){
     return function(dispatch){
-        console.log("delete")
+        const user = JSON.parse(localStorage.getItem("user"));
+        const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}` };
+
+        axios.delete( `http://68.183.74.14:4005/api/emails/${payload.id}/`, { headers })
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err));
+
         dispatch({ type: DELETE_EMAIL, payload });
     }
 }
