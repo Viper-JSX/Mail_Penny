@@ -6,6 +6,7 @@ import EmailEditor from "./Email_editor/Email_editor";
 import Authorization from "./Authorization/Authorization";
 import SignUpForm from "./Authorization/Sign_up_form";
 import SignInForm from "./Authorization/Sign_in_form";
+import MessageDialog from "./Message_dialog/Message_dialog";
 
 function Layout({ 
     handleEmailsSwitch,
@@ -19,6 +20,7 @@ function Layout({
     return(
         <div id="layout">
             <Header />
+
             <Routes>
                 <Route path="/" element={<MainPage handleSignOut={handleSignOut} handleEmailsSwitch={handleEmailsSwitch} />} />
                 <Route path="/emails/:id" element={<Email handleEmailDelete={handleEmailDelete} />} />    
@@ -31,6 +33,8 @@ function Layout({
 
                 <Route path="*" element={<h2>404 <br />Not found</h2>} />
             </Routes>
+
+            <MessageDialog />
         </div>
     )
 }
