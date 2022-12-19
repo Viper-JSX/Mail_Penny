@@ -7,8 +7,6 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
     const emails = useSelector((state) => state.user?.emails);
     const emailsToShow = emails?.results || [];
 
-    useSelector((state) => console.log(state.user.emails));
-
     return(
         <div className="emailsWrapper">
             <EmailsTopPannel handleSignOut={handleSignOut} />
@@ -29,7 +27,7 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
                 </tbody>
             </table>
 
-            <PagginationMenu count={emails.count} step={5} handler={handleEmailsSwitch} />
+            <PagginationMenu count={/*emails.count*/ 42} step={5} handler={handleEmailsSwitch} />
         </div>
     )
 }

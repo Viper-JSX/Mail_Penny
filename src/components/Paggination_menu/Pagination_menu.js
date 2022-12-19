@@ -10,15 +10,10 @@ function PagginationMenu({ count, step, handler }){
     }
 
     return(
-        <ul className="pagginationMenu">
-            {
-                Array(itemsCount).fill(0).map((item, index) => 
-                    <li onClick={() => handleItemClick({ next: index }) } key={index}>
-                        { index + 1 }
-                    </li>
-                )
-            }
-        </ul>
+        <div className="pagginationMenu">
+            <button className="prev">{"<"}</button>
+            <button className="next">{">"}</button>
+        </div>
     )
 }
 

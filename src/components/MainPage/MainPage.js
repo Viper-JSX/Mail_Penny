@@ -6,9 +6,9 @@ function MainPage({ handleSignOut, handleEmailsSwitch }){
     const user = useSelector((state) => state.user);
 
     if(!user){
-        return(
-            <Navigate to={"/authorization/sign-in"} />
-        );
+        //return(
+        //    <Navigate to={"/authorization/sign-in"} />
+        //);
     }
 
     return(
