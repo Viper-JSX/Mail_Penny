@@ -28,7 +28,7 @@ function Emails({ handleSignOut }){
                 </tbody>
             </table>
 
-            <PagginationMenu count={41} step={5} />
+            <PagginationMenu count={41} step={5} handler={( { next, current } ) => console.log(next, current)} />
         </div>
     )
 }
