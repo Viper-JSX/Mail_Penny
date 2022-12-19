@@ -3,7 +3,8 @@ import EmailOpener from "./Email_opener";
 import EmailsTopPannel from "./Emails_top_pannel";
 
 function Emails({ handleSignOut }){
-    const emails = useSelector((state) => state.user?.emails) || [];
+    const emails = useSelector((state) => state.user?.emails.results) || [];
+
     useSelector((state) => console.log(state.user.emails));
 
     return(

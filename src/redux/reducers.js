@@ -9,7 +9,7 @@ function user(state=initialState.user, action){
         }
         
         case SIGN_UP: {
-            return { ...action.payload.user, emails: [] };
+            return { ...action.payload.user };
         }
 
         case SIGN_OUT: {
