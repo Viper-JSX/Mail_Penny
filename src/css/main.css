@@ -1,3 +1,8 @@
+:root{
+    --middleDarkBorder: 2px solid black;
+    --middleLightBorder: 2px solid white;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -9,4 +14,14 @@ body{
 
 header{
     text-align: center;
+}
+
+
+
+/*Message Dialog*/
+.messageDialog{
+    border: var(--middleDarkBorder);
+    position: fixed;
+    bottom: 0;
+    right: 1rem;
 }

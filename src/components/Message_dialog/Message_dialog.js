@@ -1,6 +1,6 @@
 function MessageDialog(){
     return(
-        <div>
+        <div className="messageDialog">
             Some message
         </div>
     );
