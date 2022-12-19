@@ -20,16 +20,14 @@ function App(){
 
 
     function handleEmailsSwitch({ current, next }){
-        console.log(current, next)
-
-        //const user = JSON.parse(localStorage.getItem("user"));
-        //const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}`};
-        //if(next > current){
-        //   dispatch(getEmails({ url: emails.next, headers }));
-        //}
-        //else if(next < current){
-        //    dispatch(getEmails({ url: emails.previous, headers }));
-        //}
+        const user = JSON.parse(localStorage.getItem("user"));
+        const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}`};
+        if(next > current){
+           dispatch(getEmails({ url: emails.next, headers }));
+        }
+        else if(next < current){
+            dispatch(getEmails({ url: emails.previous, headers }));
+        }
     }
 
     function handleEmailSend({ event, emailData }){
