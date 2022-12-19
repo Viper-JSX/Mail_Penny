@@ -4,6 +4,7 @@ import { DELETE_EMAIL, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP 
 export function signIn(payload){
     return async function(dispatch){
         //Fetch the user
+        console.log(payload)
         const user =  await axios.get("http://68.183.74.14:4005/api/users/current/", {
             headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` }
         })
@@ -19,7 +20,7 @@ export function signIn(payload){
             //.then((response) => console.log("Messages", response))
             //.catch((err) => console.log(err));
 
-            localStorage.setItem("user", JSON.stringify({ username: payload.username, password: payload.password }));
+            localStorage.setItem("user", JSON.stringify({ username: payload.signInData.username, password: payload.signInData.password }));
             dispatch({ type: SIGN_IN, payload: { user } });
         }
     }

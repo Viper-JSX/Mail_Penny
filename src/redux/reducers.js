@@ -5,12 +5,13 @@ import { SEND_EMAIL, HIDE_MESSAGE, SHOW_MESSAGE, SIGN_IN, SIGN_OUT, SIGN_UP, DEL
 function user(state=initialState.user, action){
     switch(action.type){
         case SIGN_IN: {
-            return state;
+            console.log("sign-in")
+            return action.payload.user;
         }
         
         case SIGN_UP: {
             console.log("Sign up")
-            return action.payload;
+            return action.payload.user;
         }
 
         case SIGN_OUT: {
