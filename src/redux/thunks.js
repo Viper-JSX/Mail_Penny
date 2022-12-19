@@ -22,11 +22,10 @@ export function signUp(payload){
         {
             headers: { "Authorization": `Basic ${ btoa("dev_6" + ":" + "8Fjg345gGW")}` }
         })
-        .then((response) => {
-            response.data;
-        })
+        .then((response) => response.data)
         .catch((err) => console.log(err.response.data));
 
+        console.log(user);
         if(user){
             console.log(user);
             localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));

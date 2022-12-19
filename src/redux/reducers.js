@@ -9,7 +9,8 @@ function user(state=initialState.user, action){
         }
         
         case SIGN_UP: {
-            return state;
+            console.log("Sign up")
+            return action.payload;
         }
 
         case SIGN_OUT: {
