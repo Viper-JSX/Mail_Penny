@@ -3,6 +3,7 @@ import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_
 import { validateEmailAdress } from '../utilities/validation/validate_email_adress';
 import { fetchEmails } from "../utilities/fetching/fetch_emails";
 import { validateEmail } from "../utilities/validation/validate_email";
+import { apiBaseUrl } from "../api/api_constants";
 
 export function signIn(payload){
     return async function(dispatch){
@@ -88,15 +89,16 @@ export function sendEmail(payload){
 }
 
 export function deleteEmail(payload){
-    return function(dispatch){
+    return async function(dispatch){
         const user = JSON.parse(localStorage.getItem("user"));
         const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}` };
 
-        axios.delete( `http://68.183.74.14:4005/api/emails/${payload.id}`, { headers })
+        await axios.delete( `http://68.183.74.14:4005/api/emails/${payload.id}/`, { headers })
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
 
         dispatch({ type: DELETE_EMAIL, payload });
+        dispatch(getEmails({ url: `${apiBaseUrl}/emails/`, headers })); //To update emails list
     }
 }
 
