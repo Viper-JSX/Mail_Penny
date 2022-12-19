@@ -1,7 +1,14 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 function Email({ handleEmailDelete }){
+    const user = useSelector((state) => state.user);
+    if(!user){ //User not signed-in
+        return(
+            <Navigate to="/authorization" />
+        );
+    }
+
     const emailId = parseInt(useParams().id);
     const email = useSelector((state) => state.user?.emails?.results || []).find((email) => email.id === emailId);
     console.log(email);
