@@ -42,9 +42,7 @@ export function signUp(payload){
         .then((response) => response.data)
         .catch((err) => console.log(err.response.data));
 
-        console.log(user);
         if(user){
-            console.log(user);
             localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
             dispatch({ type: SIGN_UP, payload: { user } });
         }
@@ -53,6 +51,15 @@ export function signUp(payload){
 
 export function sendEmail(payload){
     return function(dispatch){
+        axios.post("http://68.183.74.14:4005/api/emails/", 
+        payload.emailData,
+
+        {
+            headers: { "Authorization": `Basic ${ btoa(payload.user.username + ":" + payload.user.password)}` },
+        })
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err));
+
         dispatch({ type: SEND_EMAIL, payload });
     }
 }

@@ -18,7 +18,9 @@ function App(){
 
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
-        dispatch(sendEmail({ emailData }));
+
+        const user = JSON.parse(localStorage.getItem("user"));
+        dispatch(sendEmail({ emailData, user }));
     }
 
     function handleEmailDelete({ id }){
