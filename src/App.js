@@ -5,12 +5,13 @@ import Layout from "./components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEmail, getEmails, sendEmail, showMessage, signIn, signUp } from "./redux/thunks";
 import { signOut } from "./redux/action_creators";
+import { useNavigate } from "react-router";
 
 
 function App(){
     const emails = useSelector((state) => state.user?.emails);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
@@ -39,6 +40,7 @@ function App(){
 
     function handleEmailDelete({ id }){
         dispatch(deleteEmail({ id }));
+        navigate("/");
     }
 
     function handleSignIn({ event, signInData }){
