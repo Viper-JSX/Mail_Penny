@@ -14,9 +14,11 @@ function Authorization(){
     }
 
     return(
-        <div className="authorization">
-            <AuthorizationNavigation />
-            <Outlet />
+        <div className="authorizationWrapper">
+            <div className="authorization">
+                <AuthorizationNavigation />
+                <Outlet />
+            </div>
         </div>
     );
 }

@@ -103,6 +103,49 @@ header > *{
 }
 
 
+/*Authorization wrapper*/
+.authorizationWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.authorization{
+    border-radius: 1rem;
+    overflow: hidden;
+    border: var(--middleDarkBorder);
+}
+
+.authorizationNavigation > *{
+    width: 7rem;
+    height: 4rem;
+    color: var(--lightColor);
+    background-color: var(--darkColor);
+    border: var(--middleLightBorder);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signInForm, .signUpForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.signInForm > *, .signUpForm > *{
+    margin: 0.3rem;
+}
+
+.signInForm > input, .signUpForm > input{
+    height: 2rem;
+}
+
+.signInForm > button, .signUpForm > button{
+    align-self: flex-end;
+}
+
+.authorizationNavigation > .active{
+    background-color: var(--hightlightedColor);
+}
 
 /*Message Dialog*/
 .messageDialog{
