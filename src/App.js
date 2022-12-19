@@ -22,7 +22,6 @@ function App(){
     function handleEmailsSwitch({ current, next }){
         const user = JSON.parse(localStorage.getItem("user"));
         const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}`};
-        console.log(emails);
         if(next > current){
            dispatch(getEmails({ url: emails.next, headers }));
         }
