@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import EmailOpener from "./Email_opener";
 import EmailsTopPannel from "./Emails_top_pannel";
+import PagginationMenu from "../Paggination_menu/Pagination_menu";
 
 function Emails({ handleSignOut }){
     const emails = useSelector((state) => state.user?.emails.results) || [];
@@ -26,6 +27,8 @@ function Emails({ handleSignOut }){
                     }
                 </tbody>
             </table>
+
+            <PagginationMenu count={41} step={5} />
         </div>
     )
 }
