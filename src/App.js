@@ -24,12 +24,11 @@ function App(){
         const headers = { "Authorization": `Basic ${ btoa(user.username + ":" + user.password)}`};
         console.log(emails);
         if(next > current){
-            getEmails({ url: emails.next, headers });
+           dispatch(getEmails({ url: emails.next, headers }));
         }
         else if(next < current){
-            getEmails({ ulr: emails.prev, headers });
+            dispatch(getEmails({ url: emails.previous, headers }));
         }
-        console.log(current, next, emails);
     }
 
     function handleEmailSend({ event, emailData }){

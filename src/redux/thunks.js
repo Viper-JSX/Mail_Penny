@@ -52,6 +52,7 @@ export function signUp(payload){
 export function getEmails(payload){
     return async function(dispatch){
         const emails = await fetchEmails(payload.url, payload.headers);
+        console.log(emails);
         dispatch({ type: GET_EMAILS, payload: { emails } });
     }
 }
