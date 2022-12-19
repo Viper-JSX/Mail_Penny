@@ -2,6 +2,7 @@ import axios from "axios";
 import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 import { validateEmailAdress } from '../utilities/validation/validate_email_adress';
 import { fetchEmails } from "../utilities/fetching/fetch_emails";
+import { validateEmail } from "../utilities/validation/validate_email";
 
 export function signIn(payload){
     return async function(dispatch){
@@ -16,7 +17,7 @@ export function signIn(payload){
             headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` }
         })
         .then((response) => response.data)
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.response));
 
         if(user){
             const emails = await fetchEmails("http://68.183.74.14:4005/api/emails/", { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` });
@@ -45,7 +46,7 @@ export function signUp(payload){
             headers: { "Authorization": `Basic ${ btoa("dev_6" + ":" + "8Fjg345gGW")}` }
         })
         .then((response) => response.data)
-        .catch((err) => console.log(err.response.data));
+        .catch((err) => console.log(err.response));
 
         if(user){
             localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
@@ -57,13 +58,22 @@ export function signUp(payload){
 export function getEmails(payload){
     return async function(dispatch){
         const emails = await fetchEmails(payload.url, payload.headers);
-        console.log(emails);
+        if(!emails){
+            dispatch(showMessage({ messageTitle: "Cannot get", messageText: "Cannot get the emails" }));
+            return;
+        }
+
         dispatch({ type: GET_EMAILS, payload: { emails } });
     }
 }
 
 export function sendEmail(payload){
     return function(dispatch){
+        if(!validateEmail(payload.emailData)){
+            dispatch(showMessage({ messageTitle: "Invalid input", messageText: "Fill in all the fields" }));
+            return;
+        }
+
         axios.post("http://68.183.74.14:4005/api/emails/", 
         payload.emailData,
 
