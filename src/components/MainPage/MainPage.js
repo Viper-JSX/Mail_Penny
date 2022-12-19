@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import Emails from "../Emails/Emails";
 
-function MainPage({ handleSignOut }){
+function MainPage({ handleSignOut, handleEmailsSwitch }){
     const user = useSelector((state) => state.user);
 
     if(!user){
@@ -13,7 +13,7 @@ function MainPage({ handleSignOut }){
 
     return(
         <div className="mainPage">
-            <Emails handleSignOut={handleSignOut} />
+            <Emails handleSignOut={handleSignOut} handleEmailsSwitch={handleEmailsSwitch} />
         </div>
     );
 }

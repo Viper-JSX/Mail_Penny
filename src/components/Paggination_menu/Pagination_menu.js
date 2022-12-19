@@ -14,7 +14,7 @@ function PagginationMenu({ count, step, handler }){
         <ul className="pagginationMenu">
             {
                 Array(itemsCount).fill(0).map((item, index) => 
-                    <li onClick={() => handleItemClick({ next: index + 1 }) } key={index}>
+                    <li onClick={() => handleItemClick({ next: index }) } key={index}>
                         { index + 1 }
                     </li>
                 )

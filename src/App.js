@@ -18,6 +18,10 @@ function App(){
 
     useSelector((state) => console.log(state.user));
 
+    function handleEmailsSwitch({ current, next }){
+        console.log(current, next);
+    }
+
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
 
@@ -46,6 +50,7 @@ function App(){
     return(
         <div className="App">
             <Layout
+                handleEmailsSwitch={handleEmailsSwitch}
                 handleEmailSend={handleEmailSend}
                 handleEmailDelete={handleEmailDelete}
 

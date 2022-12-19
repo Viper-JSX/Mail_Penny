@@ -3,7 +3,7 @@ import EmailOpener from "./Email_opener";
 import EmailsTopPannel from "./Emails_top_pannel";
 import PagginationMenu from "../Paggination_menu/Pagination_menu";
 
-function Emails({ handleSignOut }){
+function Emails({ handleSignOut, handleEmailsSwitch }){
     const emails = useSelector((state) => state.user?.emails.results) || [];
 
     useSelector((state) => console.log(state.user.emails));
@@ -28,7 +28,7 @@ function Emails({ handleSignOut }){
                 </tbody>
             </table>
 
-            <PagginationMenu count={41} step={5} handler={( { next, current } ) => console.log(next, current)} />
+            <PagginationMenu count={41} step={5} handler={handleEmailsSwitch} />
         </div>
     )
 }
