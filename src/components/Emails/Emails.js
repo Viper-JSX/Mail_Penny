@@ -6,6 +6,7 @@ import PagginationMenu from "../Paggination_menu/Pagination_menu";
 function Emails({ handleSignOut, handleEmailsSwitch }){
     const emails = useSelector((state) => state.user?.emails);
     const emailsToShow = emails?.results || [];
+    const pagginationMenuDisabled = useSelector((state) => state.user.pagginationMenuDisabled);
 
     return(
         <div className="emailsWrapper">
@@ -30,7 +31,7 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
                 </tbody>
             </table>
 
-            <PagginationMenu count={emails?.count || 0} step={5} handler={handleEmailsSwitch} disabled={false} />
+            <PagginationMenu count={emails?.count || 0} step={5} handler={handleEmailsSwitch} disabled={pagginationMenuDisabled} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
+import { DELETE_EMAIL, GET_EMAILS, HIDE_MESSAGE, SEND_EMAIL, SET_PAGGINATION_MENU_DISAILITY, SHOW_MESSAGE, SIGN_IN, SIGN_UP } from "./action_types";
 import { validateEmailAdress } from '../utilities/validation/validate_email_adress';
 import { fetchEmails } from "../utilities/fetching/fetch_emails";
 import { validateEmail } from "../utilities/validation/validate_email";
@@ -66,6 +66,8 @@ export function signUp(payload){
 
 export function getEmails(payload){
     return async function(dispatch){
+        dispatch({ type: SET_PAGGINATION_MENU_DISAILITY, payload: { disabled: true } });
+
         const emails = await fetchEmails(payload.url, payload.headers);
         if(!emails){
             dispatch(showMessage({ messageTitle: "Cannot get", messageText: "Cannot get the emails" }));
@@ -73,6 +75,7 @@ export function getEmails(payload){
         }
 
         dispatch({ type: GET_EMAILS, payload: { emails } });
+        dispatch({ type: SET_PAGGINATION_MENU_DISAILITY, payload: { disabled: false } });
     }
 }
 
