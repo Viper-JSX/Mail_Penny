@@ -47,6 +47,19 @@ header > *{
     align-items: center;
 }
 
+.appTitle > *{
+    padding: 0.5rem;
+    color: var(--lightColor);
+    background-color: var(--darkColor);
+    text-decoration: none;
+    border-radius: 0.3rem;
+    transition: 0.2s;
+}
+
+.appTitle > *:hover{
+    color: var(--darkColor);
+    background-color: var(--lightColor);
+}
 
 /*Main page*/
 .mainPage{
@@ -74,7 +87,12 @@ header > *{
     background-color: var(--lightColor);
 }
 
+.emailsTopPannel button:hover{
+    background-color: var(--hightlightedColor);
+}
+
 .emails{
+    min-height: 320px;
     margin-top: 1rem;
     color: var(--lightColor);
     background-color: var(--darkColor);
@@ -84,6 +102,10 @@ header > *{
 
 .emails tr{
     border-bottom: var(--middleLightBorder);
+}
+
+.emails > tbody > tr:hover{
+    background-color: var(--hightlightedColor);
 }
 
 .emails td > *{
@@ -116,6 +138,17 @@ header > *{
 .emailSubject{
     text-align: center;
 }
+
+.pagginationMenu > button{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.pagginationMenu > button:disabled, .pagginationMenu > button:hover{
+    color: var(--darkColor);
+    background-color: var(--lightColor);
+}
+
 
 
 /*Email editor*/
