@@ -27,14 +27,14 @@ function PagginationMenu({ count, step, handler }){
     return(
         <div className="pagginationMenu">
             {
-                currentItem !== 0 ? 
+                currentItem !== 0 && itemsCount !== 1 ?  //currentItem is 0-based, itemsCount is 1-based
                 <button className="prev" onClick={handlePrevClick} >{"<"}</button>
                 :
                 <button className="prev" disabled >{"<"}</button>
             }
             
             {
-                currentItem !== itemsCount ?
+                currentItem + 1 !== itemsCount ? //currentItem is 0-based, itemsCount is 1-based
                 <button className="next" onClick={handleNextClick}>{">"}</button>
                 :
                 <button className="next" disabled>{">"}</button>
