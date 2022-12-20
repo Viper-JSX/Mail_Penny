@@ -23,7 +23,11 @@ function Email({ handleEmailDelete }){
     return(
         <div className="email">
             <button className="deleteEmailButton" onClick={() => handleEmailDelete({ id: emailId })}>Delete</button>
-            <h3>{email.subject}</h3>
+            <h1 className="emailSubject">
+                <u>Subject:</u>
+                <br />
+                {email.subject}
+            </h1>
             <p ref={messageRef}></p>
             <b>To: {email.recipient}</b>
         </div>
