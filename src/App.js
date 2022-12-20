@@ -33,7 +33,7 @@ function App(){
 
     function handleEmailSend({ event, emailData }){
         event.preventDefault();
-
+        console.log(emailData);
         const user = JSON.parse(localStorage.getItem("user"));
         dispatch(sendEmail({ emailData, user }));
         navigate("/");

@@ -14,15 +14,19 @@ function EmailEditor({ handleEmailSend }){
 
 
     function handleRecipientChange(event){
+        console.log(emailData);
         setEmailData({ ...emailData, recipient: event.target.value });
     }
 
     function handleSubjectTextChange(event){
+        console.log(emailData);
         setEmailData({ ...emailData, subject: event.target.value });
     }
 
-    function handleEmailTextChange(event){
-        setEmailData({ ...emailData, message: event.target.value });
+    function handleEmailTextChange(value){
+        setEmailData((prevData) => {
+            return { ...prevData, message: value }
+        });
     }
 
     return(
@@ -34,8 +38,7 @@ function EmailEditor({ handleEmailSend }){
 
                 <input type="email" name="recipientEmail" placeholder="Recipient" value={emailData.recipient} onChange={handleRecipientChange} />
                 <input type="text" name="subjectText" placeholder="Subject" value={emailData.subjectText} onChange={handleSubjectTextChange} />
-                <textarea name="emailText" placeholder="Email text" value={emailData.emailText} onChange={handleEmailTextChange}></textarea>
-                <RichTextEditor />
+                <RichTextEditor handleEmailTextChange={handleEmailTextChange} />
 
                 <button id="sendEmail" type="submit">Send</button>
             </form>

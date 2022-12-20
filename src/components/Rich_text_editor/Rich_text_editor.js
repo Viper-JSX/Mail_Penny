@@ -1,6 +1,6 @@
 import '../../css/rich_text_editor.css';
 import React from "react";
-import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from "draft-js";
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw } from "draft-js";
  
 class RichTextEditor extends React.Component {
     constructor(props) {
@@ -8,7 +8,10 @@ class RichTextEditor extends React.Component {
       this.state = {editorState: EditorState.createEmpty()};
 
       this.focus = () => this.refs.editor.focus();
-      this.onChange = (editorState) => this.setState({editorState});
+      this.onChange = (editorState) => { 
+        this.setState({editorState});
+        props.handleEmailTextChange(this.refs.editor.editor.innerHTML);
+      };
 
       this.handleKeyCommand = this._handleKeyCommand.bind(this);
       this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
