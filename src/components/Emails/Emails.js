@@ -22,10 +22,10 @@ function Emails({ handleSignOut, handleEmailsSwitch }){
 
                 <tbody>
                     {
-                        emailsToShow.lenght > 0 ?
+                        emailsToShow.length > 0 ?
                         emailsToShow.map((email) => <EmailOpener email={email} key={email.id} />)
                         :
-                        <tr><td colSpan={3} style={{ textAlign: "center" }}><b>You have no messages yet</b></td></tr>
+                        <tr><td colSpan={3} style={{ textAlign: "center" }}><b>You have no emails yet</b></td></tr>
                     }
                 </tbody>
             </table>
