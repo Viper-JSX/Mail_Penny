@@ -7,7 +7,6 @@ import { apiBaseUrl } from "../api/api_constants";
 
 export function signIn(payload){
     return async function(dispatch){
-        console.log(payload)
         if(!payload.signInData.username || !payload.signInData.password){
             dispatch(showMessage({ messageTitle: "Invalid input", messageText: "Fill in all the fields" }));
             return;
@@ -19,7 +18,6 @@ export function signIn(payload){
         })
         .then((response) => response.data)
         .catch((err) => {
-            console.log(err);
             if(err.code === "ERR_NETWORK"){
                 dispatch(showMessage({ messageTitle: "Network error", messageText: "You have probably been disconnected" }));
             }

@@ -14,12 +14,10 @@ function EmailEditor({ handleEmailSend }){
 
 
     function handleRecipientChange(event){
-        console.log(emailData);
         setEmailData({ ...emailData, recipient: event.target.value });
     }
 
     function handleSubjectTextChange(event){
-        console.log(emailData);
         setEmailData({ ...emailData, subject: event.target.value });
     }
 

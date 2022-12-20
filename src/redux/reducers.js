@@ -18,7 +18,6 @@ function user(state=initialState.user, action){
         }
 
         case GET_EMAILS: {
-            console.log("getting emails", action.payload);
             return { ...state, emails: action.payload.emails };
         }
 
