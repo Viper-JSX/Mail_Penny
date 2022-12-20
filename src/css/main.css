@@ -215,8 +215,13 @@ header > *{
 
 /*Message Dialog*/
 .messageDialog{
-    border: var(--middleDarkBorder);
+    padding: 1rem;
+    color: var(--lightColor);
+    background-color: var(--darkColor);
+    border: 2px solid var(--hightlightedColor);
     position: fixed;
     bottom: 0;
     right: 1rem;
+    text-align: center;
+
 }
