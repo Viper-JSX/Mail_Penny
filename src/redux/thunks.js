@@ -18,7 +18,15 @@ export function signIn(payload){
             headers: { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` }
         })
         .then((response) => response.data)
-        .catch((err) => console.log(err.response));
+        .catch((err) => {
+            console.log(err);
+            if(err.code === "ERR_NETWORK"){
+                dispatch(showMessage({ messageTitle: "Network error", messageText: "You have probably been disconnected" }));
+            }
+            else{
+                dispatch(showMessage({ messageTitle: "Invalid data", messageText: "Check login and password one more time" }));   
+            }
+        });
 
         if(user){
             const emails = await fetchEmails("http://68.183.74.14:4005/api/emails/", { "Authorization": `Basic ${ btoa(payload.signInData.username + ":" + payload.signInData.password)}` });
@@ -47,7 +55,7 @@ export function signUp(payload){
             headers: { "Authorization": `Basic ${ btoa("dev_6" + ":" + "8Fjg345gGW")}` }
         })
         .then((response) => response.data)
-        .catch((err) => console.log(err.response));
+        .catch((err) => dispatch(showMessage({ messageTitle: "Network error", messageText: "You have probably been disconnected" })));
 
         if(user){
             localStorage.setItem("user", JSON.stringify({ username: payload.signUpData.username, password: payload.signUpData.password }));
