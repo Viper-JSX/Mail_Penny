@@ -6,7 +6,7 @@ import RichTextEditor from '../Rich_text_editor/Rich_text_editor';
 function EmailEditor({ handleEmailSend }){
     const user = useSelector((state) => state.user);
     const [ emailData, setEmailData ] = useState({ 
-        sender: user.id,
+        sender: user,
         recipient: "",
         subject: "",
         message: ""

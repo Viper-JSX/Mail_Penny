@@ -75,13 +75,14 @@ export function sendEmail(payload){
             return;
         }
 
+        payload.navigate('/');
         const headers = { "Authorization": `Basic ${ btoa(payload.user.username + ":" + payload.user.password)}` };
 
         await axios.post("http://68.183.74.14:4005/api/emails/", payload.emailData, {headers})
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
 
-        dispatch({ type: SEND_EMAIL, payload });
+        dispatch({ type: SEND_EMAIL, payload: { ...payload, navigate: null } }); //We do not need navigate function inside reducer
         dispatch(getEmails({ url: `${apiBaseUrl}/emails/`, headers })); //To update emails list after deleting
     }
 }
