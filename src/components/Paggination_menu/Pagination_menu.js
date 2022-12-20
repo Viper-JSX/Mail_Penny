@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function PagginationMenu({ count, step, handler }){
+function PagginationMenu({ count, step, disabled=false, handler }){
     const [ currentItem, setCurrentItem ] = useState(0);
     const itemsCount = Math.ceil(count / step);
 
@@ -22,6 +22,15 @@ function PagginationMenu({ count, step, handler }){
         else if(currentItem === 0){
             handler({ current: currentItem, next: currentItem });
         }
+    }
+
+    if(disabled){
+        return(
+            <div className="pagginationMenu">
+                <button className="prev" disabled >{"<"}</button>
+                <button className="next" disabled>{">"}</button>
+            </div>
+        );
     }
 
     return(
